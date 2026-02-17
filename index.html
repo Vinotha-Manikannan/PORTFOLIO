@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+
+html{scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{background:#050816;color:white;}
+
+nav{
+display:flex;justify-content:space-between;align-items:center;
+padding:20px 10%;position:fixed;width:100%;top:0;z-index:1000;
+background:rgba(5,8,22,0.8);backdrop-filter:blur(10px);
+}
+
+nav ul{display:flex;gap:30px;list-style:none;}
+nav ul li a{color:#aaa;text-decoration:none;font-size:14px;}
+nav ul li a.active, nav ul li a:hover{color:#00f5ff;}
+
+.btn{
+padding:10px 20px;border:1px solid #00f5ff;border-radius:8px;
+color:#00f5ff;background:transparent;cursor:pointer;
+}
+
+/* HERO */
+.hero{
+height:100vh;display:flex;justify-content:center;align-items:center;
+text-align:center;position:relative;
+}
+
+.hero::before{
+content:"";position:absolute;width:400px;height:400px;
+background:radial-gradient(circle,#00f5ff33,transparent);
+filter:blur(80px);z-index:-1;
+}
+
+.badge{border:1px solid #00f5ff;padding:6px 15px;border-radius:20px;color:#00f5ff;}
+h1{font-size:70px;}
+.typing{font-size:28px;color:#aaa;margin:15px 0;}
+.typing span{color:#00f5ff;}
+.desc{max-width:600px;margin:auto;color:#888;font-size:14px;}
+
+.social{margin-top:25px;display:flex;justify-content:center;gap:20px;}
+.social i{
+border:1px solid #333;padding:12px;border-radius:10px;
+transition:.3s;
+}
+.social i:hover{border-color:#00f5ff;color:#00f5ff;transform:translateY(-5px);}
+
+/* SECTIONS */
+.section{padding:120px 10%;}
+.section-title{color:#00f5ff;margin-bottom:50px;font-size:28px;}
+
+/* ABOUT */
+.about-container{
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+align-items:stretch;
+}
+
+.about-card{
+flex:1;
+min-width:300px;
+background:#0a0f2c;
+padding:30px;
+border-radius:15px;
+color:#aaa;
+line-height:1.7;
+}
+
+.about-features{
+flex:1;
+min-width:300px;
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.feature-box{
+background:#0a0f2c;
+padding:20px;
+border-radius:15px;
+transition:.3s;
+}
+
+.feature-box:hover{
+transform:translateY(-8px);
+border:1px solid #00f5ff;
+}
+
+.feature-box h3{
+color:white;
+margin-bottom:8px;
+}
+
+
+/* SKILLS */
+.tabs{display:flex;gap:20px;margin-bottom:30px;}
+.tabs button{
+background:none;border:1px solid #00f5ff;color:#00f5ff;
+padding:8px 18px;border-radius:8px;cursor:pointer;
+}
+.tabs button.active{background:#00f5ff;color:#050816;}
+
+.skill{margin-bottom:20px;}
+.bar{background:#111;height:8px;border-radius:10px;}
+.fill{
+background:linear-gradient(to right,#00f5ff,#8a2be2);
+height:100%;width:0;
+}
+
+/* PROJECTS */
+.project-container{
+display:flex;
+gap:50px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.project-image{
+flex:1;
+min-width:300px;
+height:320px;
+border-radius:20px;
+background:linear-gradient(135deg,#00f5ff22,#8a2be222);
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+.project-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:20px;
+}
+
+.featured-badge{
+position:absolute;
+top:15px;
+right:15px;
+background:#00f5ff;
+color:#000;
+padding:6px 15px;
+border-radius:20px;
+font-size:12px;
+}
+
+.project-content{
+flex:1;
+min-width:300px;
+}
+
+.project-label{
+color:#00f5ff;
+margin-bottom:10px;
+}
+
+.project-title{
+font-size:28px;
+margin-bottom:20px;
+}
+
+.project-desc{
+background:#0a0f2c;
+padding:20px;
+border-radius:15px;
+color:#aaa;
+margin-bottom:20px;
+}
+
+.project-tech span{
+background:#0a0f2c;
+padding:8px 14px;
+border-radius:8px;
+margin-right:10px;
+font-size:13px;
+color:#00f5ff;
+}
+
+.project-links{
+margin-top:20px;
+display:flex;
+gap:15px;
+}
+
+.project-links a{
+border:1px solid #333;
+padding:12px;
+border-radius:10px;
+color:white;
+transition:.3s;
+}
+
+.project-links a:hover{
+border-color:#00f5ff;
+color:#00f5ff;
+transform:translateY(-5px);
+}
+
+@media(max-width:768px){
+.project-container{
+flex-direction:column;
+}
+}
+
+/* CONTACT */
+.contact-section{
+padding:100px 10%;
+text-align:center;
+}
+
+.section-sub{
+color:#00f5ff;
+margin-bottom:10px;
+}
+
+.section-main{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.section-main span{
+color:#00f5ff;
+}
+
+.contact-desc{
+color:#aaa;
+max-width:600px;
+margin:auto;
+margin-bottom:60px;
+}
+
+.contact-container{
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+text-align:left;
+}
+
+.contact-info{
+flex:1;
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.info-box{
+display:flex;
+align-items:center;
+gap:15px;
+background:#0a0f2c;
+padding:20px;
+border-radius:15px;
+}
+
+.info-box i{
+color:#00f5ff;
+font-size:20px;
+}
+
+.hello-btn{
+margin-top:20px;
+padding:15px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#00f5ff,#8a2be2);
+color:white;
+cursor:pointer;
+}
+
+.contact-form{
+flex:1;
+background:#0a0f2c;
+padding:30px;
+border-radius:20px;
+}
+
+.form-row{
+display:flex;
+gap:20px;
+margin-bottom:20px;
+}
+
+.form-row input{
+flex:1;
+}
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:15px;
+background:#050816;
+border:none;
+border-radius:10px;
+color:white;
+}
+
+.contact-form textarea{
+height:120px;
+margin-bottom:20px;
+}
+
+.send-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#00f5ff,#8a2be2);
+color:white;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+.contact-container{
+flex-direction:column;
+}
+}
+
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2 style="color:#00f5ff;">Portfolio</h2>
+<ul>
+<li><a href="#about">01. About</a></li>
+<li><a href="#skills">02. Skills</a></li>
+<li><a href="#projects">03. Projects</a></li>
+<li><a href="#contact">04. Contact</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+<div>
+<div class="badge">✨ Available for work</div>
+<p>Hi, my name is</p>
+<h1>Vinotha M</h1>
+
+<div class="typing">
+I build things for the <span id="text"></span>
+</div>
+
+<p class="desc">
+I'm a full-stack developer specializing in building exceptional digital experiences.
+</p>
+
+<div class="social">
+<a href="https://github.com/Vinotha-Manikannan" target="_blank"><i class="fab fa-github"></i></a>
+<a href="https://www.linkedin.com/in/vinotha-m-935410289" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="mailto:vinokamalam@gmail.com"><i class="fas fa-envelope"></i></a>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+<h2 class="section-title">01. About Me</h2>
+
+<div class="about-container">
+
+    <!-- LEFT SIDE -->
+    <div class="about-card">
+        Hello! I'm Vinotha, a passionate developer who loves creating things that live on the internet.
+        My interest in web development started when I began customizing layouts and experimenting
+        with HTML & CSS.
+
+        <br><br>
+
+        Fast-forward to today, I build responsive web applications and modern UI with focus on
+        performance and user experience.
+
+        <br><br>
+
+        When I'm not coding, you can find me exploring new technologies and improving my skills.
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="about-features">
+
+        <div class="feature-box">
+            <h3>⚡ Clean Code</h3>
+            <p>Writing maintainable, scalable code that stands the test of time.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🎨 UI/UX Design</h3>
+            <p>Creating beautiful interfaces with attention to every detail.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🚀 Performance</h3>
+            <p>Optimizing for speed and delivering lightning-fast experiences.</p>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+<h2 class="section-title">02. Skills</h2>
+
+<div class="tabs">
+<button class="active">Frontend</button>
+
+</div>
+
+<div class="skill"><p>Python</p><div class="bar"><div class="fill" style="width:98%"></div></div></div>
+<div class="skill"><p>Java</p><div class="bar"><div class="fill" style="width:65%"></div></div></div>
+<div class="skill"><p>Mysql</p><div class="bar"><div class="fill" style="width:95%"></div></div></div>
+<div class="skill"><p>HTML/CSS</p><div class="bar"><div class="fill" style="width:100%"></div></div></div>
+
+
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+
+  <h2 class="section-title">03. Projects</h2>
+
+  <div class="project-container">
+
+    <div class="project-image">
+
+  <img src="download.jpg" alt="Project">
+
+  <div class="featured-badge">⭐ Featured</div>
+
+</div>
+
+
+    <!-- RIGHT CONTENT -->
+    <div class="project-content">
+
+      <p class="project-label">Featured Project</p>
+
+      <h3 class="project-title">
+        Webbrowser Automation System ↗
+      </h3>
+
+      <div class="project-desc">
+        Built a command-control system in Python to manage tasks via CLI, highlighting core Python
+skills and logical operations.
+      </div>
+
+      <div class="project-tech">
+        <span>Python</span>
+        <span>Machine Learning</span>
+        <span>Speech API</span>
+      </div>
+
+      <div class="project-links">
+
+  <a href="https://github.com/Vinotha-Manikannan/Command-Control-System"
+     target="_blank">
+     <i class="fab fa-github"></i>
+  </a>
+
+  <a href="https://drive.google.com/file/d/1Dm81aOVz_0cQfsZkqRbDfDDJOIHpVihZ/view?usp=drive_link"
+     target="_blank">
+     <i class="fas fa-external-link-alt"></i>
+  </a>
+
+</div>
+
+
+    </div>
+
+  <div class="project-container">
+
+    <div class="project-image">
+
+  <img src="" alt="Project">
+
+  <div class="featured-badge">⭐ Featured</div>
+
+</div>
+
+
+    <!-- RIGHT CONTENT -->
+    <div class="project-content">
+
+      <p class="project-label">Featured Project</p>
+
+      <h3 class="project-title">
+      Portfolio ↗
+      </h3>
+
+      <div class="project-desc">
+        Built a responsive personal portfolio using HTML, CSS, and JavaScript to showcase projects, skills, and contact information with modern UI animations.
+      </div>
+
+      <div class="project-tech">
+        <span>HTML</span>
+        <span>CSS</span>
+      
+      </div>
+
+      <div class="project-links">
+
+  <a href="https://github.com/Vinotha-Manikannan/Command-Control-System"
+     target="_blank">
+     <i class="fab fa-github"></i>
+  </a>
+
+  <a href="https://drive.google.com/file/d/1Dm81aOVz_0cQfsZkqRbDfDDJOIHpVihZ/view?usp=drive_link"
+     target="_blank">
+     <i class="fas fa-external-link-alt"></i>
+  </a>
+
+</div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="section contact-section">
+
+  <h2 class="section-sub">04. What's Next?</h2>
+  <h1 class="section-main">Get In <span>Touch</span></h1>
+
+  <p class="contact-desc">
+    I'm currently looking for new opportunities. Whether you have a question
+    or just want to say hi, I’ll try my best to get back to you!
+  </p>
+
+  <div class="contact-container">
+
+    <!-- LEFT INFO -->
+    <div class="contact-info">
+
+      <div class="info-box">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <h4>Email</h4>
+          <p>vinokamalam@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <h4>Location</h4>
+          <p>Tamil Nadu, India</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <i class="fas fa-phone"></i>
+        <div>
+          <h4>Phone</h4>
+          <p>+91 9566589045</p>
+        </div>
+      </div>
+
+      <button class="hello-btn">Say Hello ↗</button>
+
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="contact-form">
+
+      <div class="form-row">
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+      </div>
+
+      <textarea placeholder="Your Message..."></textarea>
+
+      <button class="send-btn">Send Message ✈</button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+
+const words=["web","apps","UI/UX","future"];
+let i=0,j=0,current="",isDeleting=false;
+
+function type(){
+current=words[i];
+document.getElementById("text").textContent=current.substring(0,j);
+
+if(!isDeleting && j++===current.length){isDeleting=true;setTimeout(type,1000);return;}
+if(isDeleting && j--===0){isDeleting=false;i=(i+1)%words.length;}
+
+setTimeout(type,100);
+}
+type();
+
+/* ACTIVE NAV */
+const sections=document.querySelectorAll("section");
+const navLinks=document.querySelectorAll("nav ul li a");
+
+window.addEventListener("scroll",()=>{
+let current="";
+sections.forEach(sec=>{
+const top=window.scrollY;
+if(top>=sec.offsetTop-200){current=sec.getAttribute("id");}
+});
+navLinks.forEach(a=>{
+a.classList.remove("active");
+document.querySelector('nav ul li a[href*='+current+']').classList.add("active");
+});
+});
+
+</script>
+
+</body>
+</html>
